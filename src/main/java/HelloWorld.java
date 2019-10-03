@@ -1,6 +1,6 @@
-import javax.faces.bean.ManagedBean;
+import javax.inject.Named;
 
-@ManagedBean
+@Named
 public class HelloWorld  {
 
 	public HelloWorld() {
@@ -9,5 +9,6 @@ public class HelloWorld  {
 
 	public String getMessage() {
 		return "Hello World!";
+
 	}
 }

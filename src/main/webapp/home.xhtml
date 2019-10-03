@@ -1,14 +1,18 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html">
-<head>
-<title>JSF Tutorial!</title>
-</head>
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>JSF Tutorial!</title>
+</h:head>
 
-<body>
+<h:body>
+	<p:messages id="globalMessages" />
 	<h:panelGrid columns="1">
 		<h:outputLabel value="#{helloWorld.getMessage()}" id="label" />
 		<h:outputLink value="https://www.google.com/">GOOGLE</h:outputLink>
+		
+		<p:calendar />
 	</h:panelGrid>
-</body>
+</h:body>
 </html>
