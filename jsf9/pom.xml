@@ -11,6 +11,11 @@
 
 	<name>jsf9 Maven Webapp - parent</name>
 
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+	</properties>
+
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
@@ -24,17 +29,34 @@
 				<artifactId>primefaces</artifactId>
 				<version>6.2</version>
 			</dependency>
+			<dependency>
+				<groupId>org.projectlombok</groupId>
+				<artifactId>lombok</artifactId>
+				<version>1.18.12</version>
+				<scope>provided</scope>
+			</dependency>
+
+			<dependency>
+				<artifactId>jsf9-web</artifactId>
+				<groupId>org.hunjsfprofessional</groupId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<artifactId>jsf9-pu</artifactId>
+				<groupId>org.hunjsfprofessional</groupId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<artifactId>jsf9-ejb</artifactId>
+				<groupId>org.hunjsfprofessional</groupId>
+				<version>${project.version}</version>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 
-	<dependencies>
-		<dependency>
-			<groupId>javax</groupId>
-			<artifactId>javaee-api</artifactId>
-		</dependency>
-	</dependencies>
-
 	<modules>
 		<module>jsf9-web</module>
+		<module>jsf9-pu</module>
+		<module>jsf9-ejb</module>
 	</modules>
 </project>

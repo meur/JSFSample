@@ -1,3 +1,5 @@
+package org.hunjfsprofessional.jsf9.web.bean;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -6,8 +8,9 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import domain.World;
-import domain.dao.WorldDao;
+import lombok.Getter;
+import org.hunjfsprofessional.jsf9.ejb.domain.entities.World;
+import org.hunjfsprofessional.jsf9.ejb.domain.dao.WorldDao;
 
 @Named
 @ViewScoped
@@ -15,6 +18,7 @@ public class HelloWorld implements Serializable {
 
 	private static final long serialVersionUID = 3109860261123539564L;
 
+	@Getter
 	private World world;
 	
 	@Inject
@@ -42,7 +46,4 @@ public class HelloWorld implements Serializable {
 		return "Hello World!";
 	}
 
-	public World getWorld() {
-		return world;
-	}
 }
