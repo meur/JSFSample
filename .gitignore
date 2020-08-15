@@ -2,8 +2,6 @@ target/
 .settings/
 .classpath
 .project
-/.idea/compiler.xml
-/.idea/dataSources.xml
-/.idea/misc.xml
-/.idea/vcs.xml
-/.idea/.gitignore
+/.idea/
+*.iml
+*.idea

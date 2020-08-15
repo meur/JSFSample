@@ -1,8 +1,7 @@
-import java.io.Serializable;
-
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
+import java.io.Serializable;
 
 @Named
 @SessionScoped
