@@ -6,7 +6,7 @@
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 		<jta-data-source>java:jboss/datasources/HelloWorldDS</jta-data-source>
 		
-		<class>domain.World</class>
+		<class>org.hunjfsprofessional.jsf9.ejb.domain.entities.World</class>
 
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 	</persistence-unit>

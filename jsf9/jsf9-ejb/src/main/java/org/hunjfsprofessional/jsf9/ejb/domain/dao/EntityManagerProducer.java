@@ -1,15 +1,17 @@
-package domain.dao;
+package org.hunjfsprofessional.jsf9.ejb.domain.dao;
 
+import javax.ejb.Stateless;
 import javax.enterprise.inject.Produces;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+@Stateless
 public class EntityManagerProducer {
-	
-	@Produces
+
 	@PersistenceContext(name = "helloworld-persistence-unit")
 	private EntityManager em;
 
+	@Produces
 	public EntityManager getEm() {
 		return em;
 	}

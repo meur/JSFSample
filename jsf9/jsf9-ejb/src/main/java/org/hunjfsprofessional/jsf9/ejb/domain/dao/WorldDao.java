@@ -1,8 +1,8 @@
-package domain.dao;
+package org.hunjfsprofessional.jsf9.ejb.domain.dao;
 
 import javax.ejb.Stateless;
 
-import domain.World;
+import org.hunjfsprofessional.jsf9.ejb.domain.entities.World;
 
 @Stateless
 public class WorldDao extends BaseDao<World> {

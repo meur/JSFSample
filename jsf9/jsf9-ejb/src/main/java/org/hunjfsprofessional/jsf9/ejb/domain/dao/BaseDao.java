@@ -1,4 +1,4 @@
-package domain.dao;
+package org.hunjfsprofessional.jsf9.ejb.domain.dao;
 
 import java.io.Serializable;
 import java.util.List;
