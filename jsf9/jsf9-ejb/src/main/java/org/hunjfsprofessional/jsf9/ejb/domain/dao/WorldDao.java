@@ -1,8 +1,11 @@
 package org.hunjfsprofessional.jsf9.ejb.domain.dao;
 
+import com.querydsl.jpa.impl.JPAQuery;
+import org.hunjfsprofessional.jsf9.ejb.domain.entities.World;
+
 import javax.ejb.Stateless;
 
-import org.hunjfsprofessional.jsf9.ejb.domain.entities.World;
+import static org.hunjfsprofessional.jsf9.ejb.domain.entities.QWorld.world;
 
 @Stateless
 public class WorldDao extends BaseDao<World> {
@@ -11,5 +14,11 @@ public class WorldDao extends BaseDao<World> {
 	public Class<World> getPersistentClass() {
 		return World.class;
 	}
-	
+
+	public Long findHelloedCount() {
+		return new JPAQuery<World>(em)
+				.select(world).from(world)
+				.where(world.helloed.isTrue())
+				.fetchCount();
+	}
 }

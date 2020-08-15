@@ -46,4 +46,11 @@ public class HelloWorld implements Serializable {
 		return "Hello World!";
 	}
 
+	public World getFirstEntity() {
+		return worldDao.find(1L);
+	}
+
+	public Long getHelloedCount() {
+		return worldDao.findHelloedCount();
+	}
 }

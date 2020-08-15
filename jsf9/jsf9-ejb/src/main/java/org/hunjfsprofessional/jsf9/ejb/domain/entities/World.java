@@ -16,7 +16,7 @@ import javax.persistence.Table;
 @Setter
 @Entity
 @Table(name = "world")
-public class World implements Serializable {
+public class World extends BaseEntity implements Serializable {
 	
 	private static final long serialVersionUID = 4931841736107790659L;
 
