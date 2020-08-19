@@ -1,6 +1,4 @@
-package org.hunjfsprofessional.jsf9.ejb.domain.dao;
-
-import org.hunjfsprofessional.jsf9.ejb.domain.entities.BaseEntity;
+package org.hunjfsprofessional.jsf9.ejb.domain.base;
 
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;

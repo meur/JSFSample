@@ -12,7 +12,6 @@
 
     <artifactId>jsf9-ejb</artifactId>
 
-
     <build>
         <plugins>
             <plugin>
@@ -50,6 +49,10 @@
         <dependency>
             <groupId>com.querydsl</groupId>
             <artifactId>querydsl-jpa</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-envers</artifactId>
         </dependency>
 
         <dependency>

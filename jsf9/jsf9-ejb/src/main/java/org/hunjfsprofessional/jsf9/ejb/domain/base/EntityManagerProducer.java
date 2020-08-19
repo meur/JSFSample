@@ -1,4 +1,4 @@
-package org.hunjfsprofessional.jsf9.ejb.domain.dao;
+package org.hunjfsprofessional.jsf9.ejb.domain.base;
 
 import javax.ejb.Stateless;
 import javax.enterprise.inject.Produces;

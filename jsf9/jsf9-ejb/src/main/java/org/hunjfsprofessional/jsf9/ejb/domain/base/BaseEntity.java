@@ -1,4 +1,4 @@
-package org.hunjfsprofessional.jsf9.ejb.domain.entities;
+package org.hunjfsprofessional.jsf9.ejb.domain.base;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;

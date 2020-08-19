@@ -34,6 +34,7 @@
                     </schemas>
                     <baselineVersion>0</baselineVersion>
                     <baselineOnMigrate>true</baselineOnMigrate>
+                    <outOfOrder>true</outOfOrder>
                 </configuration>
                 <dependencies>
                     <dependency>

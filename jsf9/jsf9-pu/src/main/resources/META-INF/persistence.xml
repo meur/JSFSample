@@ -5,7 +5,17 @@
 		transaction-type="JTA">
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 		<jta-data-source>java:jboss/datasources/HelloWorldDS</jta-data-source>
+
+		<properties>
+			<property name="org.hibernate.envers.audit_table_prefix" value="v_"/>
+			<property name="org.hibernate.envers.audit_table_suffix" value=""/>
+			<property name="org.hibernate.envers.store_data_at_delete" value="true"/>
+			<property name="org.hibernate.envers.revision_field_name" value="verzio"/>
+			<property name="org.hibernate.envers.revision_type_field_name" value="muvelet"/>
+			<property name="org.hibernate.envers.default_schema" value="public"/>
+		</properties>
 		
+		<class>org.hunjfsprofessional.jsf9.ejb.domain.base.AdatbazisVerzio</class>
 		<class>org.hunjfsprofessional.jsf9.ejb.domain.entities.World</class>
 
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>

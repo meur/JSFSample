@@ -1,6 +1,7 @@
 package org.hunjfsprofessional.jsf9.ejb.domain.dao;
 
 import com.querydsl.jpa.impl.JPAQuery;
+import org.hunjfsprofessional.jsf9.ejb.domain.base.BaseDao;
 import org.hunjfsprofessional.jsf9.ejb.domain.entities.World;
 
 import javax.ejb.Stateless;
@@ -17,7 +18,7 @@ public class WorldDao extends BaseDao<World> {
 
 	public Long findHelloedCount() {
 		return new JPAQuery<World>(em)
-				.select(world).from(world)
+				.from(world)
 				.where(world.helloed.isTrue())
 				.fetchCount();
 	}

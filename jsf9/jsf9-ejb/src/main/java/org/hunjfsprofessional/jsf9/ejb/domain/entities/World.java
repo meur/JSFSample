@@ -2,6 +2,8 @@ package org.hunjfsprofessional.jsf9.ejb.domain.entities;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.envers.Audited;
+import org.hunjfsprofessional.jsf9.ejb.domain.base.BaseEntity;
 
 import java.io.Serializable;
 
@@ -14,6 +16,7 @@ import javax.persistence.Table;
 
 @Getter
 @Setter
+@Audited
 @Entity
 @Table(name = "world")
 public class World extends BaseEntity implements Serializable {
