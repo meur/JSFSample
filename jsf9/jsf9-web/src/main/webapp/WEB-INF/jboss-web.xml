@@ -1,3 +1,4 @@
 <jboss-web>
+    <security-domain>jsf9-sd</security-domain>
     <context-root>jsf9</context-root>
 </jboss-web>

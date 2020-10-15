@@ -1,0 +1,23 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="page_simple.xhtml">
+    <ui:define name="formContent">
+
+        <h:form id="form1">
+            <p:panel id="logoutContainer" style="border: none;">
+                <p:commandButton value="LOG OUT" actionListener="#{userBean.logOut}" style="float: right;"
+                                 process="@this" action="/public/login.xhtml?faces-redirect=true"/>
+                <p:outputLabel value="Hello #{userBean.username}!" style="float: right; margin: 0.4em;" />
+            </p:panel>
+
+            <ui:insert name="mainContent" />
+
+        </h:form>
+
+    </ui:define>
+</ui:composition>
+</html>

@@ -1,9 +1,9 @@
 DROP TABLE IF EXISTS v_world;
 
 CREATE TABLE v_world (
-    verzio      BIGSERIAL,
+    verzio      BIGINT,
     muvelet     SMALLINT,
-    id 		    BIGSERIAL,
+    id 		    BIGINT,
     universe    TEXT,
     helloed	    BOOLEAN,
     CONSTRAINT fk_v_world_verzio FOREIGN KEY (verzio) REFERENCES adatbazis_verzio (id),

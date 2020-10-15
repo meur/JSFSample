@@ -17,6 +17,8 @@
 		
 		<class>org.hunjfsprofessional.jsf9.ejb.domain.base.AdatbazisVerzio</class>
 		<class>org.hunjfsprofessional.jsf9.ejb.domain.entities.World</class>
+		<class>org.hunjfsprofessional.jsf9.ejb.domain.entities.Felhasznalo</class>
+		<class>org.hunjfsprofessional.jsf9.ejb.domain.entities.Szerepkor</class>
 
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 	</persistence-unit>

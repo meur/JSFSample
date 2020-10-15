@@ -5,10 +5,6 @@
 <web-app>
 	<display-name>Archetype Created Web Application</display-name>
 
-	<!-- FacesServlet is main servlet responsible to handle all request. It 
-		acts as central controller. This servlet initializes the JSF components before 
-		the JSP is displayed. -->
-
 	<servlet>
 		<servlet-name>Faces Servlet</servlet-name>
 		<servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
@@ -21,6 +17,48 @@
 	</servlet-mapping>
 
 	<welcome-file-list>
-		<welcome-file>pages/home.xhtml</welcome-file>
+		<welcome-file>/app/home.xhtml</welcome-file>
 	</welcome-file-list>
+
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>App Content for users</web-resource-name>
+			<url-pattern>/app/*</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>basic_user</role-name>
+		</auth-constraint>
+	</security-constraint>
+
+	<login-config>
+		<auth-method>FORM</auth-method>
+		<form-login-config>
+			<form-login-page>/public/login.xhtml</form-login-page>
+			<form-error-page>/public/login_error.xhtml</form-error-page>
+		</form-login-config>
+	</login-config>
+
+	<!--
+		In case of Wildfly (20) application server:
+		You will have to create a new security-domain in the standalone.xml, with the following content:
+
+			<subsystem xmlns="urn:jboss:domain:security:2.0">
+				...
+                <security-domain name="jsf9-sd" cache-type="default">
+                    <authentication>
+                        <login-module code="org.jboss.security.auth.spi.DatabaseServerLoginModule" flag="required">
+                            <module-option name="dsJndiName" value="java:jboss/datasources/HelloWorldDS"/>
+							<module-option name="hashAlgorithm" value="MD5"/>
+							<module-option name="hashEncoding" value="base64"/>
+                            <module-option name="principalsQuery" value="select password from felhasznalo where username=?"/>
+                            <module-option name="rolesQuery" value="select s.megnevezes, 'Roles' from felhasznalo f join j_felhasznalo_szerepkor j on f.id = j.id_felhasznalo join szerepkor s on s.id = j.id_szerepkor where f.username=?"/>
+                        </login-module>
+                    </authentication>
+                </security-domain>
+	-->
+	
+	<security-role>
+		<role-name>basic_user</role-name>
+	</security-role>
+
 </web-app>
