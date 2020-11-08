@@ -1,0 +1,44 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:p="http://primefaces.org/ui"
+	  xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="/page.xhtml">
+	<ui:define name="mainContent">
+		<p:messages id="globalMessages" />
+		<h:panelGrid columns="1">
+			<h:outputLabel value="#{helloWorld.getMessage()}" id="label" />
+			<h:outputLink value="https://www.google.com/">GOOGLE</h:outputLink>
+			<p:calendar />
+
+			<p:separator />
+
+			<p:outputLabel for="world" value="World:" />
+			<p:inputText id="world" value="#{helloWorld.world.universe}" />
+
+			<p:outputLabel for="helloed" value="Helloed:" />
+			<p:selectBooleanButton id="helloed"
+								   value="#{helloWorld.world.helloed}" onLabel="Yes" offLabel="No"
+								   onIcon="pi pi-check" offIcon="pi pi-times" />
+			<p:commandButton value="SAVE"
+							 actionListener="#{helloWorld.saveWorld()}" process="@form"
+							 action="home.xhtml" update="@form" />
+		</h:panelGrid>
+		<p:dataTable var="world" value="#{helloWorld.getAllWorlds()}">
+			<p:column headerText="ID">
+				<h:outputLabel value="#{world.id}" />
+			</p:column>
+			<p:column headerText="Universe">
+				<h:outputLabel value="#{world.universe}" />
+			</p:column>
+			<p:column headerText="Helloed?">
+				<h:outputLabel value="#{world.helloed}" />
+			</p:column>
+		</p:dataTable>
+		<h:outputText value="#{helloWorld.firstEntity}" />
+		<br />
+		<h:outputText value="#{helloWorld.helloedCount}" />
+	</ui:define>
+</ui:composition>
+</html>
