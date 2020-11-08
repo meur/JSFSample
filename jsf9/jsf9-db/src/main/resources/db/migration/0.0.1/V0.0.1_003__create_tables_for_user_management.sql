@@ -15,7 +15,7 @@ CREATE TABLE v_felhasznalo (
     verzio      BIGINT,
     muvelet     SMALLINT,
     id 		    BIGINT,
-    universe    TEXT,
+    username    TEXT,
     password	TEXT,
     CONSTRAINT fk_v_felhasznalo FOREIGN KEY (verzio) REFERENCES adatbazis_verzio (id),
     CONSTRAINT pk_v_felhasznalo PRIMARY KEY (id, verzio)
@@ -47,7 +47,7 @@ CREATE TABLE v_j_felhasznalo_szerepkor (
     verzio          BIGINT,
     muvelet         SMALLINT,
     id_felhasznalo  BIGINT,
-    id_szerepkor     BIGINT,
+    id_szerepkor    BIGINT,
     CONSTRAINT fk_v_j_felhasznalo_szerepkor FOREIGN KEY (verzio) REFERENCES adatbazis_verzio (id),
     CONSTRAINT pk_v_j_felhasznalo_szerepkor PRIMARY KEY (id_felhasznalo, id_szerepkor, verzio)
 );
