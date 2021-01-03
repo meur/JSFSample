@@ -5,3 +5,5 @@ target/
 /.idea/
 *.iml
 *.idea
+*/jboss_own.properties
+*/todo.txt

@@ -1,5 +1,5 @@
-import org.hunjfsprofessional.jsf9.ejb.domain.dao.WorldDao;
-import org.hunjfsprofessional.jsf9.ejb.domain.entities.World;
+import org.hunjsfprofessional.jsf9.ejb.domain.dao.WorldDao;
+import org.hunjsfprofessional.jsf9.ejb.domain.entities.World;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
@@ -37,7 +37,7 @@ public class MyTest1 {
         WebArchive war = ShrinkWrap.create(WebArchive.class)
                 .addPackages(true,
                         "com.querydsl",
-                        "org.hunjfsprofessional.jsf9.ejb.domain")
+                        "org.hunjsfprofessional.jsf9.ejb.domain")
                 .addAsResource("test-persistence.xml", "META-INF/persistence.xml");
 
         System.out.println(war.toString(true));
