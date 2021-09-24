@@ -1,10 +1,6 @@
 set DB_USERNAME=${database.username}
 set DB_PASSWORD=${database.password}
 
-if (outcome == success) of /subsystem=datasources/data-source=ExampleDS/:read-resource
-    data-source remove --name=ExampleDS
-end-if
-
 if (outcome != success) of /subsystem=datasources/data-source=HelloWorldDS/:read-resource
     data-source add --jta=true --jndi-name=java:jboss/datasources/HelloWorldDS --name=HelloWorldDS --use-java-context=true --connection-url=jdbc:postgresql://localhost:54321/HelloPostgre --driver-class=org.postgresql.Driver --driver-name=postgresql-42.2.8.jar --user-name=$DB_USERNAME --password=$DB_PASSWORD --valid-connection-checker-class-name=org.jboss.jca.adapters.jdbc.extensions.postgres.PostgreSQLValidConnectionChecker --background-validation=true --exception-sorter-class-name=org.jboss.jca.adapters.jdbc.extensions.postgres.PostgreSQLExceptionSorter
 end-if

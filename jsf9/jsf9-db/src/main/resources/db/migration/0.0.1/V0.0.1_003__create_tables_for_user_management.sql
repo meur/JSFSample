@@ -58,3 +58,11 @@ INSERT INTO j_felhasznalo_szerepkor (id_felhasznalo, id_szerepkor) VALUES (
     (SELECT id FROM felhasznalo WHERE username = 'user'),
     (SELECT id FROM szerepkor WHERE megnevezes = 'basic_user')
 );
+
+-- jbpm technical role and user
+INSERT INTO szerepkor (megnevezes) VALUES ('Administrator');
+INSERT INTO felhasznalo (username, password) VALUES ('Administrator', '7hHLsZBS5AsHqsDKBgwj7g=='); --password is also 'user'
+INSERT INTO j_felhasznalo_szerepkor (id_felhasznalo, id_szerepkor) VALUES (
+    (SELECT id FROM felhasznalo WHERE username = 'Administrator'),
+    (SELECT id FROM szerepkor WHERE megnevezes = 'Administrator')
+);

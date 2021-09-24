@@ -1,0 +1,20 @@
+1. create docker container
+2. add and apply profile in maven settings for wildfly
+    <profiles>
+        <profile>
+            <id>jsf9_flyway</id>
+            <properties>
+                <flywaydb.url>jdbc:postgresql://localhost:54321/HelloPostgre</flywaydb.url>
+                <flywaydb.user>postgres</flywaydb.user>
+                <flywaydb.pw>password</flywaydb.pw>
+                <flywaydb.schema>public</flywaydb.schema>
+            </properties>
+        </profile>
+    </profiles>
+3. create database "HelloPostgre" manually
+4. setup M2_HOME env. variable
+5. build jbpm project
+6. build parent
+7. add postgresql driver to deployments
+8. copy standalone-full.xml
+9. setup jboss with cli

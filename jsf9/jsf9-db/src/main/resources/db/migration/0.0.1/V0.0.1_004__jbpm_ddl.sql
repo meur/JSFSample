@@ -1,3 +1,5 @@
+-- https://github.com/kiegroup/jbpm/blob/7.52.x/jbpm-db-scripts/src/main/resources/db/ddl-scripts/postgresql/postgresql-jbpm-schema.sql#L1
+
 create table Attachment (
                             id int8 not null,
                             accessType int4,
@@ -102,7 +104,7 @@ create table ContextMappingInfo (
 
 create table CorrelationKeyInfo (
                                     keyId int8 not null,
-                                    name varchar(255),
+                                    name varchar(255) not null,
                                     processInstanceId int8 not null,
                                     OPTLOCK int4,
                                     primary key (keyId)
@@ -413,6 +415,8 @@ create table TaskEvent (
                            userId varchar(255),
                            OPTLOCK int4,
                            workItemId int8,
+                           correlationKey varchar(255),
+                           processType int4,
                            primary key (id)
 );
 
@@ -502,6 +506,8 @@ alter table CorrelationPropertyInfo
     add constraint FK_hrmx1m882cejwj9c04ixh50i4
         foreign key (correlationKey_keyId)
             references CorrelationKeyInfo;
+
+alter table CorrelationKeyInfo add constraint IDX_CorrelationKeyInfo_name unique (name);
 
 alter table Deadline
     add constraint FK_68w742sge00vco2cq3jhbvmgx
@@ -806,8 +812,7 @@ create index IDX_PAsBAs_Entity ON PeopleAssignments_BAs(entity_id);
 create index IDX_PAsBAs_Task ON PeopleAssignments_BAs(task_id);
 create index IDX_PAsExcl_Entity ON PeopleAssignments_ExclOwners(entity_id);
 create index IDX_PAsExcl_Task ON PeopleAssignments_ExclOwners(task_id);
-create index IDX_PAsPot_Entity ON PeopleAssignments_PotOwners(entity_id);
-create index IDX_PAsPot_Task ON PeopleAssignments_PotOwners(task_id);
+create index IDX_PAsPot_TaskEntity ON PeopleAssignments_PotOwners(task_id,entity_id);
 create index IDX_PAsRecip_Entity ON PeopleAssignments_Recipients(entity_id);
 create index IDX_PAsRecip_Task ON PeopleAssignments_Recipients(task_id);
 create index IDX_PAsStake_Entity ON PeopleAssignments_Stakeholders(entity_id);
@@ -826,6 +831,8 @@ create index IDX_Task_processId on Task(processId);
 create index IDX_Task_status on Task(status);
 create index IDX_Task_archived on Task(archived);
 create index IDX_Task_workItemId on Task(workItemId);
+
+create index IDX_TaskEvent_taskId on TaskEvent (taskId);
 
 create index IDX_EventTypes_element ON EventTypes(element);
 
@@ -869,6 +876,7 @@ create index IDX_VInstLog_pId on VariableInstanceLog(processId);
 create index IDX_NInstLog_pInstId on NodeInstanceLog(processInstanceId);
 create index IDX_NInstLog_nodeType on NodeInstanceLog(nodeType);
 create index IDX_NInstLog_pId on NodeInstanceLog(processId);
+create index IDX_NInstLog_workItemId on NodeInstanceLog (workItemId);
 
 create index IDX_ErrorInfo_pInstId on ExecutionErrorInfo(PROCESS_INST_ID);
 create index IDX_ErrorInfo_errorAck on ExecutionErrorInfo(ERROR_ACK);

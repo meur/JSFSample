@@ -25,6 +25,7 @@
 							 actionListener="#{helloWorld.saveWorld()}" process="@form"
 							 action="home.xhtml" update="@form" />
 		</h:panelGrid>
+
 		<p:dataTable var="world" value="#{helloWorld.getAllWorlds()}">
 			<p:column headerText="ID">
 				<h:outputLabel value="#{world.id}" />
@@ -34,6 +35,15 @@
 			</p:column>
 			<p:column headerText="Helloed?">
 				<h:outputLabel value="#{world.helloed}" />
+			</p:column>
+		</p:dataTable>
+
+		<p:dataTable var="task" value="#{helloWorld.getAllTasks()}">
+			<p:column headerText="ID">
+				<h:outputLabel value="#{task.id}" />
+			</p:column>
+			<p:column headerText="Status">
+				<h:outputLabel value="#{task.status}" />
 			</p:column>
 		</p:dataTable>
 		<h:outputText value="#{helloWorld.firstEntity}" />

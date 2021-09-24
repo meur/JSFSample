@@ -1,0 +1,10 @@
+version: "0.0.1"
+services:
+  pg-database:
+    image: postgres:12
+    ports:
+      - "5432:54321
+    volumes:
+      - database-volume:/var/lib/postgresql/data
+volumes:
+  database-volume: {}
