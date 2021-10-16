@@ -16,6 +16,7 @@
 			<property name="hibernate.id.new_generator_mappings" value="false" />
 			<property name="hibernate.transaction.jta.platform" value="org.hibernate.service.jta.platform.internal.JBossAppServerJtaPlatform" />
 			<property name="hibernate.max_fetch_depth" value="3" />
+			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
 		</properties>
 		
 		<class>org.hunjsfprofessional.jsf9.ejb.domain.base.AdatbazisVerzio</class>

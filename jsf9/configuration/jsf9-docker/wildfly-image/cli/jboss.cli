@@ -1,0 +1,21 @@
+set DB_USERNAME=${database.username}
+set DB_PASSWORD=${database.password}
+set JBPM_HT_CALLBACK=${org.jbpm.ht.callback}
+
+if (outcome != success) of /subsystem=datasources/data-source=HelloWorldDS/:read-resource
+    data-source add --jta=true --jndi-name=java:jboss/datasources/HelloWorldDS --name=HelloWorldDS --use-java-context=true --connection-url=jdbc:postgresql://postgre:5432/HelloPostgre --driver-class=org.postgresql.Driver --driver-name=postgresql-42.2.8.jar --user-name=$DB_USERNAME --password=$DB_PASSWORD --valid-connection-checker-class-name=org.jboss.jca.adapters.jdbc.extensions.postgres.PostgreSQLValidConnectionChecker --background-validation=true --exception-sorter-class-name=org.jboss.jca.adapters.jdbc.extensions.postgres.PostgreSQLExceptionSorter
+end-if
+/subsystem=datasources/data-source=HelloWorldDS:test-connection-in-pool
+
+if (outcome != success) of /subsystem=security/security-domain=jsf9-sd/:read-resource
+    /subsystem=security/security-domain=jsf9-sd:add
+    /subsystem=security/security-domain=jsf9-sd/authentication=classic:add
+    /subsystem=security/security-domain=jsf9-sd/authentication=classic/login-module=Database:add(code=org.jboss.security.auth.spi.DatabaseServerLoginModule,flag=required,module-options=[("dsJndiName"=>"java:jboss/datasources/HelloWorldDS"),("hashAlgorithm"=>"MD5"),("hashEncoding"=>"base64"),("principalsQuery"=>"select password from felhasznalo where username=?"),("rolesQuery"=>"select s.megnevezes, 'Roles' from felhasznalo f join j_felhasznalo_szerepkor j on f.id = j.id_felhasznalo join szerepkor s on s.id = j.id_szerepkor where f.username=?")])
+end-if
+reload
+
+if (outcome != success) of /system-property=org.jbpm.ht.callback:read-resource
+    /system-property=org.jbpm.ht.callback:add(value=$JBPM_HT_CALLBACK)
+else
+    /system-property=org.jbpm.ht.callback:write-attribute(name="value", value=$JBPM_HT_CALLBACK)
+end-if

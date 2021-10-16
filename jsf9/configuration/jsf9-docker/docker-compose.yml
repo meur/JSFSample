@@ -1,0 +1,45 @@
+version: "3.9"
+
+services:
+
+  postgre:
+    container_name: jsf9-db
+    image: postgres:13.4
+    environment:
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=HelloPostgre
+      - PGDATA=/opt/pgdata
+    volumes:
+      - jsf9-pgdata:/opt/pgdata
+#      - ./initdb:/docker-entrypoint-initdb.d
+    ports:
+      - "5432:5432"
+
+  wildfly:
+    container_name: jsf9-wf
+    build: ./wildfly-image
+    image: wildfly-admin-own
+    volumes:
+      - type: bind
+        source: ./exposed-wildfly
+        target: /opt/exposed-wildfly
+      - type: bind
+        source: ~/.m2/repository/
+        target: /opt/jboss/.m2/repository/
+#      - type: bind
+#        source: ../../jsf9-web/target
+#        target: /opt/jboss/deployments
+    ports:
+      - "8080:8080"
+      - "8443:8443"
+      - "9990:9990"
+      - "9993:9993"
+#      - "64316:64316"
+      - "8009:8009"
+      - "3528:3528"
+      - "4712:4712"
+      - "4713:4713"
+      - "8787:8787"
+
+volumes:
+  jsf9-pgdata:
